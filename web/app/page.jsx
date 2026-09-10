@@ -21,8 +21,9 @@ export default function Page() {
   const [active, setActive] = useState("overview");
 
   useEffect(() => {
+    const BASE = process.env.NEXT_PUBLIC_BASE_PATH || "";
     const files = ["overview", "chapters", "characters", "network", "timeline", "info_boundary", "retrieval_demo", "texts"];
-    Promise.all(files.map((f) => fetch(`/data/${f}.json`).then((r) => r.json()))).then((arr) => {
+    Promise.all(files.map((f) => fetch(`${BASE}/data/${f}.json`).then((r) => r.json()))).then((arr) => {
       const o = {};
       files.forEach((f, i) => (o[f] = arr[i]));
       setD(o);

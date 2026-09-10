@@ -6,7 +6,13 @@
 
 *Deconstruct a million-word novel into a vector store, then rewrite it as a parallel novel from a supporting character's point of view.*
 
-[English](#english) · [中文](#中文) · [快速开始](#快速开始) · [设计文档](docs/DESIGN_zh.md)
+[![License: MIT](https://img.shields.io/badge/License-MIT-e6b866.svg)](LICENSE)
+[![Next.js 14](https://img.shields.io/badge/Next.js-14-000000?logo=next.js&logoColor=white)](web)
+[![Python 3.9+](https://img.shields.io/badge/Python-3.9%2B-4fd6a8?logo=python&logoColor=white)](pipeline)
+[![Deploy Pages](https://img.shields.io/badge/GitHub_Pages-online_demo-2fae86?logo=github&logoColor=white)](#-在线-demo)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-4fd6a8.svg)](#roadmap)
+
+[English](#english) · [中文](#中文) · [🌐 在线 Demo](#-在线-demo) · [快速开始](#快速开始) · [设计文档](docs/DESIGN_zh.md)
 
 ![overview](docs/screenshot-overview.png)
 
@@ -24,6 +30,20 @@
 - **阶段 B · 配角视角生成**：选定一个配角，产出他的「**人物圣经**」和「**信息边界表**」，再逐章生成——每章都用向量库回查原著保证不矛盾，同时用信息边界过滤掉配角此刻不该知道的内容。
 
 配角视角小说的灵魂是 **信息差**：读者跟着配角，看到被主角视角遮蔽的另一面。原著早已揭示的真相，配角可能很晚才拼凑出来，甚至一辈子蒙在鼓里。
+
+### 🌐 在线 Demo
+
+可视化工作台已配置为 **GitHub Pages 静态部署**，别人不装 Node 也能直接在浏览器里看 showcase。
+
+推送到 `main` 后，仓库自带的 GitHub Actions（`.github/workflows/deploy.yml`）会自动构建并发布，地址为：
+
+```
+https://<你的用户名>.github.io/novel-rag/
+```
+
+**开启步骤**：仓库 Settings → Pages → Build and deployment → Source 选 **GitHub Actions**，然后 push 一次即可。若你改了仓库名，把工作流里的 `NEXT_PUBLIC_BASE_PATH: /novel-rag` 同步改成 `/<新仓库名>`。
+
+> 本地预览：`cd web && npm install && npm run dev`（`http://localhost:3000`）。
 
 ### Showcase：《聚宝仙盆》→ 乔慧珠视角
 
