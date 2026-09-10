@@ -12,7 +12,7 @@
 [![Live Demo](https://img.shields.io/badge/Live_Demo-youngfreefjs.github.io-2fae86?logo=github&logoColor=white)](https://youngfreefjs.github.io/novel-rag/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-4fd6a8.svg)](#roadmap)
 
-**English** · [中文](#中文) · [🌐 Live Demo](https://youngfreefjs.github.io/novel-rag/)
+**English** · [中文 README](README.zh.md) · [🌐 Live Demo](https://youngfreefjs.github.io/novel-rag/)
 
 ![NovelRAG — character appearance share and relationship topology](docs/hero.png)
 
@@ -120,25 +120,3 @@ This repository ships **tooling** and **original, derived artifacts only** — n
 ## License
 
 Code released under the [MIT License](LICENSE). Showcase novel texts are **not** included and remain the property of their original authors.
-
----
-
-<a name="中文"></a>
-## 中文
-
-`NovelRAG` 是一套「小说拆解 + 配角视角续写」的开源工作流，分两个阶段：
-
-- **阶段 A · 拆解与向量化**：把整本小说清洗、切章切块，抽取人物 / 关系 / 时间线，并 embedding 成可检索的向量库，作为续写时的「**世界真相约束层**」。
-- **阶段 B · 配角视角生成**：选定一个配角，产出「**人物圣经**」和「**信息边界表**」，再逐章生成——每章都用向量库回查原著保证不矛盾，同时用信息边界过滤掉配角此刻不该知道的内容。
-
-配角视角小说的灵魂是 **信息差**：读者跟着配角，看到被主角视角遮蔽的另一面。
-
-**两个 showcase**（可视化右上角一键切换语言）：
-- 🇬🇧 英文：《Harry Potter》1–7 部 → 配角 **Severus Snape** 视角（他真实的立场与动机瞒了整整七部）。
-- 🇨🇳 中文：《聚宝仙盆》(2113 章 / 500 万字) → 配角 **乔慧珠** 视角（她永远不知道主角开挂崛起的秘密）。
-
-**快速开始**：可视化 `cd web && npm install && npm run dev`；拆解流水线 `cd pipeline && pip install -r requirements.txt`。
-
-**在线 Demo**：推送到 `main` 后由 GitHub Actions 自动部署到 **https://youngfreefjs.github.io/novel-rag/**（首次需在 Settings → Pages → Source 选 GitHub Actions）。
-
-**版权**：仓库只公开工具代码、聚合统计与原创衍生内容，**不含任何原著正文全文**（`.gitignore` 排除）；英文 showcase 不发布任何原文片段。请在合法授权范围内使用源文本。
