@@ -22,10 +22,8 @@ jobs:
         working-directory: web
     steps:
       - uses: actions/checkout@v4
-      - name: Configure Pages (auto-enable)
-        uses: actions/configure-pages@v5
-        with:
-          enablement: true
+      # NOTE: enable Pages first — repo Settings → Pages → Source → "GitHub Actions".
+      # (The default GITHUB_TOKEN cannot create the Pages site automatically.)
       - uses: actions/setup-node@v4
         with:
           node-version: 22
