@@ -71,3 +71,8 @@ th{color:var(--dim);font-weight:500;font-size:12px}
 .legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin-top:10px}
 .legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:middle}
 .hint{font-size:12px;color:var(--dim);margin-top:8px}
+.langbtn{background:var(--panel);border:1px solid var(--line);color:var(--ink);font-size:13px;
+  padding:6px 14px;border-radius:20px;cursor:pointer;font-family:inherit;font-weight:600;transition:.15s}
+.langbtn:hover{border-color:var(--jade);color:var(--jade)}
+.langbtn.floating{position:fixed;top:14px;right:16px;z-index:50;backdrop-filter:blur(8px);
+  background:rgba(23,28,39,.82)}

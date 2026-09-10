@@ -27,19 +27,20 @@ function md(text) {
   return out.join("");
 }
 
-export default function Pov({ info, texts }) {
+export default function Pov({ info, texts, tabs, cols, badges, lang }) {
   const [tab, setTab] = useState("bible");
-  const badge = (state) => {
-    if (state.includes("主角不知")) return <span className="badge own">她独有</span>;
-    if (state.includes("永远") || state.includes("基本不知")) return <span className="badge never">盲区</span>;
-    return <span className="badge known">已知</span>;
+  const badge = (f) => {
+    const tier = f.tier || "known";
+    if (tier === "own") return <span className="badge own">{badges.own}</span>;
+    if (tier === "blind") return <span className="badge never">{badges.blind}</span>;
+    return <span className="badge known">{badges.known}</span>;
   };
   return (
     <div>
       <div style={{ marginBottom: 16 }}>
-        <button className={"q" + (tab === "bible" ? " on" : "")} onClick={() => setTab("bible")}>人物圣经</button>
-        <button className={"q" + (tab === "info" ? " on" : "")} onClick={() => setTab("info")}>信息边界表</button>
-        <button className={"q" + (tab === "sample" ? " on" : "")} onClick={() => setTab("sample")}>视角样章</button>
+        <button className={"q" + (tab === "bible" ? " on" : "")} onClick={() => setTab("bible")}>{tabs.bible}</button>
+        <button className={"q" + (tab === "info" ? " on" : "")} onClick={() => setTab("info")}>{tabs.info}</button>
+        <button className={"q" + (tab === "sample" ? " on" : "")} onClick={() => setTab("sample")}>{tabs.sample}</button>
       </div>
 
       {tab === "bible" && (
@@ -50,15 +51,16 @@ export default function Pov({ info, texts }) {
         <div className="panel">
           <p className="desc">{info.notes}</p>
           <table>
-            <thead><tr><th>关键情报</th><th>她何时知道</th><th>状态</th><th>戏剧作用</th></tr></thead>
+            <thead><tr><th>{cols.fact}</th><th>{cols.when}</th><th>{cols.state}</th><th>{cols.use}</th></tr></thead>
             <tbody>
               {info.facts.map((f, i) => (
                 <tr key={i}>
                   <td style={{ color: "#e8ebf0" }}>{f.fact}</td>
                   <td style={{ color: "#9aa6b8", whiteSpace: "nowrap" }}>
-                    {f.known_at_chapter === null ? "—" : `第 ${f.known_at_chapter} 章`}
+                    {f.known_at_chapter === null || f.known_at_chapter === undefined
+                      ? "—" : (lang === "zh" ? `第 ${f.known_at_chapter} 章` : `Ch ${f.known_at_chapter}`)}
                   </td>
-                  <td>{badge(f.state)}<div style={{ fontSize: 11, color: "#6b7686", marginTop: 3 }}>{f.state}</div></td>
+                  <td>{badge(f)}<div style={{ fontSize: 11, color: "#6b7686", marginTop: 3 }}>{f.state}</div></td>
                   <td style={{ color: "#9aa6b8" }}>{f.dramatic_use}</td>
                 </tr>
               ))}

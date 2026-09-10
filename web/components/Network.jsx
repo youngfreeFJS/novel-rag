@@ -1,7 +1,8 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 
-export default function Network({ data }) {
+export default function Network({ data, pKey, sKey, pName, sName, legend }) {
+  const protagonist = pKey, side = sKey;
   const ref = useRef(null);
   const [sel, setSel] = useState(null);
   const stateRef = useRef({ nodes: [], edges: [] });
@@ -71,7 +72,7 @@ export default function Network({ data }) {
 
   const { nodes = [], edges = [], W = 720, H = 520 } = stateRef.current;
   const color = (name) =>
-    name === "贺平生" ? "#e6b866" : name === "乔慧珠" ? "#e57ba0" : "#4fd6a8";
+    name === protagonist ? "#e6b866" : name === side ? "#e57ba0" : "#4fd6a8";
 
   return (
     <div style={{ overflowX: "auto" }}>
@@ -94,8 +95,8 @@ export default function Network({ data }) {
               <circle cx={n.x} cy={n.y} r={n.r} fill={color(n.name)} fillOpacity="0.85"
                 stroke="#0d0f14" strokeWidth="1.5" />
               <text x={n.x} y={n.y + n.r + 12} textAnchor="middle" fill="#e8ebf0"
-                fontSize={n.name === "贺平生" ? 14 : 12}
-                fontWeight={n.name === "贺平生" || n.name === "乔慧珠" ? 700 : 400}>
+                fontSize={n.name === protagonist ? 14 : 12}
+                fontWeight={n.name === protagonist || n.name === side ? 700 : 400}>
                 {n.name}
               </text>
             </g>
@@ -103,10 +104,10 @@ export default function Network({ data }) {
         })}
       </svg>
       <div className="legend">
-        <span><i style={{ background: "#e6b866" }} />主角 贺平生</span>
-        <span><i style={{ background: "#e57ba0" }} />配角视角 乔慧珠</span>
-        <span><i style={{ background: "#4fd6a8" }} />其他角色</span>
-        <span>连线=同章共现（越粗越常同框）· 悬停高亮关系</span>
+        <span><i style={{ background: "#e6b866" }} />{legend.protagonist} {pName}</span>
+        <span><i style={{ background: "#e57ba0" }} />{legend.side} {sName}</span>
+        <span><i style={{ background: "#4fd6a8" }} />{legend.other}</span>
+        <span>{legend.edge}</span>
       </div>
     </div>
   );

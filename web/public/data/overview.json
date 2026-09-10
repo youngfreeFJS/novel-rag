@@ -1,1 +1,0 @@
-{"title": "聚宝仙盆", "author": "香果味奶茶", "chapters": 2113, "total_chars": 5017595, "chunks": 7874, "vector_dim": 256, "embed_method": "jieba分词 + TF-IDF + SVD(256维)", "protagonist": "贺平生", "side_pov": "乔慧珠", "characters_tracked": 34}

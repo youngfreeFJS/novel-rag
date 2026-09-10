@@ -1,9 +1,11 @@
 "use client";
 import { useState } from "react";
 
-export default function Retrieval({ demo }) {
+export default function Retrieval({ demo, note, lang }) {
   const [i, setI] = useState(0);
   const cur = demo[i];
+  const chLabel = (n) => (lang === "zh" ? `第 ${n} 章` : `Ch ${n}`);
+  const scoreLabel = lang === "zh" ? "相似度" : "score";
   return (
     <div>
       <div style={{ marginBottom: 14 }}>
@@ -17,16 +19,14 @@ export default function Retrieval({ demo }) {
         {cur.results.map((r, k) => (
           <div className="res" key={k}>
             <div className="head">
-              <span>第 {r.chapter} 章《{r.title}》 · 进度 {(r.pos * 100).toFixed(0)}%</span>
-              <span className="score">相似度 {r.score}</span>
+              <span>{chLabel(r.chapter)}{r.title ? ` · ${r.title}` : ""} · {(r.pos * 100).toFixed(0)}%</span>
+              <span className="score">{scoreLabel} {r.score}</span>
             </div>
-            <div className="txt">{r.text}…</div>
+            <div className="txt">{r.text ? `${r.text}…` : r.topic}</div>
           </div>
         ))}
       </div>
-      <div className="hint">
-        以上为向量库离线检索结果（jieba+TF-IDF+SVD 256 维，余弦相似度 Top-5）。生成配角视角时，同样以此召回原著「世界真相」做一致性约束——并按信息边界表过滤掉乔慧珠此刻不该知道的内容。
-      </div>
+      <div className="hint">{note}</div>
     </div>
   );
 }

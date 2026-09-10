@@ -1,10 +1,10 @@
 <div align="center">
 
-# NovelRAG · 小说 RAG 引擎
+# NovelRAG
 
-**把一部百万字长篇小说拆解成向量库，再从一个「配角」的视角，续写一部与原著严丝合缝的平行长篇。**
+**Deconstruct a full-length novel into a vector store, then rewrite it as a parallel novel from a *supporting character's* point of view.**
 
-*Deconstruct a million-word novel into a vector store, then rewrite it as a parallel novel from a supporting character's point of view.*
+*把一部长篇小说拆解成向量库，再从一个「配角」的视角，续写一部与原著严丝合缝的平行长篇。*
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-e6b866.svg)](LICENSE)
 [![Next.js 14](https://img.shields.io/badge/Next.js-14-000000?logo=next.js&logoColor=white)](web)
@@ -12,7 +12,7 @@
 [![Live Demo](https://img.shields.io/badge/Live_Demo-youngfreefjs.github.io-2fae86?logo=github&logoColor=white)](https://youngfreefjs.github.io/novel-rag/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-4fd6a8.svg)](#roadmap)
 
-[English](#english) · [中文](#中文) · [🌐 在线 Demo](#-在线-demo) · [快速开始](#快速开始) · [设计文档](docs/DESIGN_zh.md)
+**English** · [中文](#中文) · [🌐 Live Demo](https://youngfreefjs.github.io/novel-rag/)
 
 ![overview](docs/screenshot-overview.png)
 
@@ -20,131 +20,125 @@
 
 ---
 
-## 中文
+## What it is
 
-### 这是什么
+`NovelRAG` is an open-source pipeline for **novel deconstruction + supporting-character retelling**, in two stages:
 
-`NovelRAG` 是一套「小说拆解 + 配角视角续写」的开源工作流，分两个阶段：
+- **Stage A — Deconstruct & Vectorize.** Clean a whole novel, split it into chapters and overlapping chunks, extract characters / relations / timeline, and embed everything into a searchable vector store — the *world-truth constraint layer* for the retelling.
+- **Stage B — Side-POV Generation.** Pick a supporting character, produce their **character bible** and an **information-boundary table**, then generate chapter by chapter — each chapter recalls the source vector store for consistency, filtered by what the character is allowed to know at that point.
 
-- **阶段 A · 拆解与向量化**：把整本小说清洗、切章切块，抽取人物 / 关系 / 时间线，并 embedding 成可检索的向量库，作为续写时的「**世界真相约束层**」。
-- **阶段 B · 配角视角生成**：选定一个配角，产出他的「**人物圣经**」和「**信息边界表**」，再逐章生成——每章都用向量库回查原著保证不矛盾，同时用信息边界过滤掉配角此刻不该知道的内容。
+The soul of a side-POV novel is the **information gap**: the reader follows the side character and sees the half of the story the protagonist's POV hides. Truths the original revealed long ago, the side character may piece together only late — or never.
 
-配角视角小说的灵魂是 **信息差**：读者跟着配角，看到被主角视角遮蔽的另一面。原著早已揭示的真相，配角可能很晚才拼凑出来，甚至一辈子蒙在鼓里。
+## Showcases
 
-### 🌐 在线 Demo
+The visualization ships with **two languages, two showcases** — toggle with the button in the top-right of the demo.
 
-可视化工作台已配置为 **GitHub Pages 静态部署**，别人不装 Node 也能直接在浏览器里看 showcase。
-
-推送到 `main` 后，仓库自带的 GitHub Actions（`.github/workflows/deploy.yml`）会自动构建并发布，地址为：
-
-```
-https://youngfreefjs.github.io/novel-rag/
-```
-
-**开启步骤**：仓库 Settings → Pages → Build and deployment → Source 选 **GitHub Actions**，然后 push 一次即可。若你改了仓库名，把工作流里的 `NEXT_PUBLIC_BASE_PATH: /novel-rag` 同步改成 `/<新仓库名>`。
-
-> 本地预览：`cd web && npm install && npm run dev`（`http://localhost:3000`）。
-
-### Showcase：《聚宝仙盆》→ 乔慧珠视角
-
-本仓库以一部真实的修仙长篇《聚宝仙盆》(约 **2113 章 / 500 万字**，主角贺平生靠【聚宝盆】开挂) 作为示例，配角选定女主级角色 **乔慧珠**。
-
-| 指标 | 数值 |
-|---|---|
-| 章节 | 2,113 |
-| 字符 | 5,017,595 |
-| 向量块 chunks | 7,874 |
-| 向量维度 | 256 |
-| 追踪人物 | 34 |
-| 配角视角 | 乔慧珠（出场 2,403 次，贯穿全书） |
-
-> **核心信息差**：乔慧珠永远不知道【聚宝盆】的存在——她只能把贺平生的火箭式崛起归于「天赋与机缘」。而她独有一段主角不知情的私密往事。这一正一反两条信息差，就是她视角新书的全部张力来源。
+| Language | Source | Protagonist | Side POV | Why it's a great gap |
+|---|---|---|---|---|
+| 🇬🇧 English | *Harry Potter*, Books 1–7 | Harry Potter | **Severus Snape** | His true allegiance and his motive are hidden from nearly everyone for the entire series. |
+| 🇨🇳 中文 | 《聚宝仙盆》(2,113 ch / 5M chars) | 贺平生 | **乔慧珠** | She never learns the secret behind the hero's impossible rise. |
 
 <table>
 <tr>
-<td width="50%"><img src="docs/screenshot-characters.png"/><br><sub>人物图谱 + 同章共现网络</sub></td>
-<td width="50%"><img src="docs/screenshot-pov.png"/><br><sub>配角人物圣经</sub></td>
+<td width="50%"><img src="docs/screenshot-characters.png"/><br><sub>Character ranking + co-occurrence network</sub></td>
+<td width="50%"><img src="docs/screenshot-pov.png"/><br><sub>Side-character bible &amp; information boundary</sub></td>
 </tr>
 </table>
 
-### 架构
+## Architecture
 
 ```
-源小说(txt)
+source novel (txt)
    │
-   ├─[阶段A 拆解]─► 清洗 ─► 切章切块 ─► 人物/关系/时间线抽取 ─► 向量库(世界真相层)
-   │                                              │
-   │                                              └─► 配角人物圣经 + 信息边界表
+   ├─[Stage A]─► clean ─► chapter/chunk split ─► character & relation & timeline extraction ─► vector store (world-truth layer)
+   │                                                     │
+   │                                                     └─► side-character bible + information-boundary table
    │
-   └─[阶段B 生成]─► 配角视角大纲 ─► 逐章生成(双路召回) ─► 一致性质检 ─► 配角视角新书
-                                        ▲            ▲
-                                   配角圣经      源小说向量库
+   └─[Stage B]─► side-POV outline ─► per-chapter generation (dual recall) ─► consistency QC ─► side-POV novel
+                                            ▲              ▲
+                                    character bible   source vector store
 ```
 
-### 快速开始
+## Quick start
 
-**可视化工作台（Next.js）**
+**Visualization (Next.js)**
 
 ```bash
 cd web
 npm install
 npm run dev        # http://localhost:3000
 ```
-7 个板块：总览 / 章节结构 / 人物图谱 / 登场时间线 / 配角视角 / 向量检索 / 工作流。图表全部手写 SVG，零第三方图表库。
+Seven sections: Overview / Chapters / Characters / Timeline / Side POV / Vector Search / Pipeline. All charts are hand-written SVG — zero third-party chart libraries. Language toggle top-right.
 
-**拆解流水线（Python）**
+**Deconstruction pipeline (Python)**
 
 ```bash
 cd pipeline
 pip install -r requirements.txt
-# 把你的源小说放到 ./source/raw.txt（UTF-8），然后：
-python 01_clean_split.py    # 清洗 + 切章
-python 02_chunk.py          # 两级切块（带重叠）
-python 04_char_stats.py     # 人物词频 / 共现网络 / 时间线
-python 05_embed.py          # 向量化（离线 TF-IDF + SVD-256）
-python 06_search.py         # 交互式向量检索
-python 07_export.py         # 导出可视化数据
+# put your source novel at ./source/raw.txt (UTF-8), then:
+python 01_clean_split.py    # clean + chapter split
+python 02_chunk.py          # two-level overlapping chunks
+python 04_char_stats.py     # frequency / co-occurrence / timeline
+python 05_embed.py          # vectorize (offline TF-IDF + SVD-256)
+python 06_search.py         # interactive vector search
+python 07_export.py         # export data for the visualization
 ```
 
-> 向量化默认用离线的 `jieba + TF-IDF + SVD(256维)`，零外网依赖即可跑通。生产环境把 `05_embed.py` 换成 **BGE-M3** 等语义 embedding 模型即可获得更强的语义检索。
+> Vectorization defaults to an offline `TF-IDF + SVD (256-d)` stack — no external calls needed. Swap `05_embed.py` for a semantic model such as **BGE-M3** for stronger retrieval.
 
-### 目录
+## 🌐 Live demo (GitHub Pages)
 
-| 目录 | 内容 |
+The visualization is configured for **static GitHub Pages deployment** — anyone can view the showcase in a browser with no Node install.
+
+On every push to `main`, the bundled GitHub Actions workflow (`.github/workflows/deploy.yml`) builds and publishes it. It auto-enables Pages, but the very first time you must set **Settings → Pages → Source → GitHub Actions**. Then the demo lives at:
+
+```
+https://youngfreefjs.github.io/novel-rag/
+```
+If you rename the repo, update `NEXT_PUBLIC_BASE_PATH: /novel-rag` in the workflow to match.
+
+## Layout
+
+| Dir | Contents |
 |---|---|
-| `web/` | Next.js 14 可视化工作台（App Router，手写 SVG 图表） |
-| `pipeline/` | 拆解脚本 01–07（清洗 → 切块 → 抽取 → 向量化 → 检索 → 导出） |
-| `showcase/` | 《聚宝仙盆》衍生分析产物 + 乔慧珠人物圣经 / 信息边界 / 视角样章 |
-| `docs/` | 设计文档、截图 |
+| `web/` | Next.js 14 visualization (App Router, hand-written SVG charts, i18n) |
+| `pipeline/` | Deconstruction scripts 01–07 (clean → chunk → extract → vectorize → search → export) |
+| `showcase/` | Derived analysis for both showcases + side-character bibles / boundaries / sample chapters |
+| `docs/` | Design doc, screenshots |
 
-### ⚠️ 版权说明
+## ⚠️ Copyright
 
-本仓库 **不包含** 源小说《聚宝仙盆》的正文全文，也不包含完整的切块 / 向量文件——它们是受版权保护的作品，仅应留在你本地（已在 `.gitignore` 中排除）。仓库公开的是：**工具代码**、**聚合统计**（字数、人物频次、共现网络、时间线）、**原创衍生内容**（人物圣经、视角样章，均由本工具生成）、以及用于演示的**截断片段**（每条 ≤220 字）。请在合法授权范围内使用源文本。
+This repository ships **tooling** and **original, derived artifacts only** — never the source novels' full text or full chunk/vector files (they are `.gitignore`d). Published content is limited to: code, aggregate statistics (counts, character frequencies, co-occurrence, timeline), original analysis (character bibles, sample chapters written by this tool as transformative commentary), and — for the Chinese showcase only — short retrieval snippets (≤220 chars). The English showcase publishes **no source passages** at all. Use any source text within your own lawful rights; the novels remain the property of their authors.
 
-### Roadmap
+## Roadmap
 
-- [ ] 阶段 B 逐章生成器：分卷大纲 → 章纲 → 正文，接入 LLM
-- [ ] 向量后端可插拔（Qdrant / Chroma / BGE-M3）
-- [ ] 一致性质检智能体（越界检测 + 自动返工）
-- [ ] 多配角一键切换（王敦兄弟视角等）
-
----
-
-## English
-
-`NovelRAG` is an open-source pipeline for **novel deconstruction + supporting-character retelling**, in two stages:
-
-- **Stage A — Deconstruct & Vectorize**: clean, chapter/chunk-split the whole novel, extract characters / relations / timeline, and embed it into a searchable vector store that acts as a *world-truth constraint layer*.
-- **Stage B — Side-POV Generation**: pick a supporting character, produce a *character bible* and an *information-boundary table*, then generate chapter by chapter — each chapter retrieves from the source vector store for consistency, filtered by what the character is allowed to know at that point.
-
-The soul of a side-POV novel is the **information gap**: the reader follows the side character and sees the half of the story the protagonist's POV hides.
-
-**Showcase**: a real 2,113-chapter / 5M-character Chinese xianxia web novel, retold from its female lead's point of view. See the numbers and screenshots above.
-
-**Quick start**: `cd web && npm install && npm run dev` for the visualization; `cd pipeline && pip install -r requirements.txt` for the deconstruction scripts.
-
-**Copyright**: this repo ships the *tooling* and *original derived artifacts* only — never the source novel's full text or full chunk/vector files (gitignored). Use source texts within your lawful rights.
+- [ ] Stage B generator: volume outline → chapter outline → prose, wired to an LLM
+- [ ] Pluggable vector backends (Qdrant / Chroma / BGE-M3)
+- [ ] Consistency-QC agent (leak detection + auto-revision)
+- [ ] One-click side-character switching
 
 ## License
 
-Code released under the [MIT License](LICENSE). The showcase novel text is **not** included and remains the property of its original author.
+Code released under the [MIT License](LICENSE). Showcase novel texts are **not** included and remain the property of their original authors.
+
+---
+
+<a name="中文"></a>
+## 中文
+
+`NovelRAG` 是一套「小说拆解 + 配角视角续写」的开源工作流，分两个阶段：
+
+- **阶段 A · 拆解与向量化**：把整本小说清洗、切章切块，抽取人物 / 关系 / 时间线，并 embedding 成可检索的向量库，作为续写时的「**世界真相约束层**」。
+- **阶段 B · 配角视角生成**：选定一个配角，产出「**人物圣经**」和「**信息边界表**」，再逐章生成——每章都用向量库回查原著保证不矛盾，同时用信息边界过滤掉配角此刻不该知道的内容。
+
+配角视角小说的灵魂是 **信息差**：读者跟着配角，看到被主角视角遮蔽的另一面。
+
+**两个 showcase**（可视化右上角一键切换语言）：
+- 🇬🇧 英文：《Harry Potter》1–7 部 → 配角 **Severus Snape** 视角（他真实的立场与动机瞒了整整七部）。
+- 🇨🇳 中文：《聚宝仙盆》(2113 章 / 500 万字) → 配角 **乔慧珠** 视角（她永远不知道主角开挂崛起的秘密）。
+
+**快速开始**：可视化 `cd web && npm install && npm run dev`；拆解流水线 `cd pipeline && pip install -r requirements.txt`。
+
+**在线 Demo**：推送到 `main` 后由 GitHub Actions 自动部署到 **https://youngfreefjs.github.io/novel-rag/**（首次需在 Settings → Pages → Source 选 GitHub Actions）。
+
+**版权**：仓库只公开工具代码、聚合统计与原创衍生内容，**不含任何原著正文全文**（`.gitignore` 排除）；英文 showcase 不发布任何原文片段。请在合法授权范围内使用源文本。
