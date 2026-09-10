@@ -1,0 +1,489 @@
+{
+ "nodes": [
+  {
+   "name": "贺平生",
+   "freq": 49166
+  },
+  {
+   "name": "王敦",
+   "freq": 3300
+  },
+  {
+   "name": "乔慧珠",
+   "freq": 2403
+  },
+  {
+   "name": "骆冰瑶",
+   "freq": 1413
+  },
+  {
+   "name": "温不晚",
+   "freq": 1259
+  },
+  {
+   "name": "韩厚止",
+   "freq": 1070
+  },
+  {
+   "name": "周青眉",
+   "freq": 939
+  },
+  {
+   "name": "辛宝宝",
+   "freq": 880
+  },
+  {
+   "name": "苏真真",
+   "freq": 750
+  },
+  {
+   "name": "金苦",
+   "freq": 594
+  },
+  {
+   "name": "玉宁",
+   "freq": 505
+  },
+  {
+   "name": "计无心",
+   "freq": 485
+  },
+  {
+   "name": "明日月",
+   "freq": 474
+  },
+  {
+   "name": "炼霓虹",
+   "freq": 391
+  },
+  {
+   "name": "陆晓慈",
+   "freq": 389
+  },
+  {
+   "name": "九皇子",
+   "freq": 344
+  },
+  {
+   "name": "赵灵儿",
+   "freq": 303
+  },
+  {
+   "name": "南七七",
+   "freq": 294
+  },
+  {
+   "name": "商曦红",
+   "freq": 270
+  },
+  {
+   "name": "郝云",
+   "freq": 250
+  },
+  {
+   "name": "苏念",
+   "freq": 246
+  },
+  {
+   "name": "徐昆仑",
+   "freq": 238
+  }
+ ],
+ "edges": [
+  {
+   "source": "贺平生",
+   "target": "郝云",
+   "weight": 24
+  },
+  {
+   "source": "王敦",
+   "target": "贺平生",
+   "weight": 316
+  },
+  {
+   "source": "贺平生",
+   "target": "赵灵儿",
+   "weight": 47
+  },
+  {
+   "source": "玉宁",
+   "target": "贺平生",
+   "weight": 61
+  },
+  {
+   "source": "玉宁",
+   "target": "赵灵儿",
+   "weight": 29
+  },
+  {
+   "source": "徐昆仑",
+   "target": "玉宁",
+   "weight": 18
+  },
+  {
+   "source": "徐昆仑",
+   "target": "贺平生",
+   "weight": 44
+  },
+  {
+   "source": "徐昆仑",
+   "target": "赵灵儿",
+   "weight": 26
+  },
+  {
+   "source": "乔慧珠",
+   "target": "贺平生",
+   "weight": 300
+  },
+  {
+   "source": "乔慧珠",
+   "target": "玉宁",
+   "weight": 11
+  },
+  {
+   "source": "乔慧珠",
+   "target": "赵灵儿",
+   "weight": 5
+  },
+  {
+   "source": "乔慧珠",
+   "target": "王敦",
+   "weight": 30
+  },
+  {
+   "source": "乔慧珠",
+   "target": "徐昆仑",
+   "weight": 13
+  },
+  {
+   "source": "苏真真",
+   "target": "贺平生",
+   "weight": 105
+  },
+  {
+   "source": "九皇子",
+   "target": "贺平生",
+   "weight": 36
+  },
+  {
+   "source": "九皇子",
+   "target": "苏真真",
+   "weight": 5
+  },
+  {
+   "source": "乔慧珠",
+   "target": "苏真真",
+   "weight": 27
+  },
+  {
+   "source": "王敦",
+   "target": "苏真真",
+   "weight": 11
+  },
+  {
+   "source": "玉宁",
+   "target": "王敦",
+   "weight": 5
+  },
+  {
+   "source": "玉宁",
+   "target": "苏真真",
+   "weight": 5
+  },
+  {
+   "source": "南七七",
+   "target": "贺平生",
+   "weight": 42
+  },
+  {
+   "source": "乔慧珠",
+   "target": "南七七",
+   "weight": 8
+  },
+  {
+   "source": "周青眉",
+   "target": "贺平生",
+   "weight": 133
+  },
+  {
+   "source": "周青眉",
+   "target": "王敦",
+   "weight": 20
+  },
+  {
+   "source": "南七七",
+   "target": "周青眉",
+   "weight": 14
+  },
+  {
+   "source": "乔慧珠",
+   "target": "周青眉",
+   "weight": 24
+  },
+  {
+   "source": "周青眉",
+   "target": "苏真真",
+   "weight": 28
+  },
+  {
+   "source": "南七七",
+   "target": "王敦",
+   "weight": 22
+  },
+  {
+   "source": "贺平生",
+   "target": "骆冰瑶",
+   "weight": 180
+  },
+  {
+   "source": "贺平生",
+   "target": "金苦",
+   "weight": 72
+  },
+  {
+   "source": "王敦",
+   "target": "骆冰瑶",
+   "weight": 50
+  },
+  {
+   "source": "王敦",
+   "target": "金苦",
+   "weight": 5
+  },
+  {
+   "source": "金苦",
+   "target": "骆冰瑶",
+   "weight": 15
+  },
+  {
+   "source": "周青眉",
+   "target": "金苦",
+   "weight": 14
+  },
+  {
+   "source": "周青眉",
+   "target": "骆冰瑶",
+   "weight": 5
+  },
+  {
+   "source": "苏念",
+   "target": "贺平生",
+   "weight": 29
+  },
+  {
+   "source": "贺平生",
+   "target": "陆晓慈",
+   "weight": 45
+  },
+  {
+   "source": "苏念",
+   "target": "陆晓慈",
+   "weight": 11
+  },
+  {
+   "source": "计无心",
+   "target": "贺平生",
+   "weight": 57
+  },
+  {
+   "source": "明日月",
+   "target": "贺平生",
+   "weight": 45
+  },
+  {
+   "source": "明日月",
+   "target": "陆晓慈",
+   "weight": 7
+  },
+  {
+   "source": "贺平生",
+   "target": "韩厚止",
+   "weight": 126
+  },
+  {
+   "source": "温不晚",
+   "target": "王敦",
+   "weight": 14
+  },
+  {
+   "source": "温不晚",
+   "target": "计无心",
+   "weight": 23
+  },
+  {
+   "source": "温不晚",
+   "target": "贺平生",
+   "weight": 176
+  },
+  {
+   "source": "王敦",
+   "target": "计无心",
+   "weight": 11
+  },
+  {
+   "source": "明日月",
+   "target": "温不晚",
+   "weight": 9
+  },
+  {
+   "source": "温不晚",
+   "target": "陆晓慈",
+   "weight": 6
+  },
+  {
+   "source": "计无心",
+   "target": "韩厚止",
+   "weight": 12
+  },
+  {
+   "source": "韩厚止",
+   "target": "骆冰瑶",
+   "weight": 26
+  },
+  {
+   "source": "明日月",
+   "target": "韩厚止",
+   "weight": 6
+  },
+  {
+   "source": "乔慧珠",
+   "target": "明日月",
+   "weight": 8
+  },
+  {
+   "source": "王敦",
+   "target": "韩厚止",
+   "weight": 59
+  },
+  {
+   "source": "计无心",
+   "target": "辛宝宝",
+   "weight": 11
+  },
+  {
+   "source": "计无心",
+   "target": "骆冰瑶",
+   "weight": 10
+  },
+  {
+   "source": "贺平生",
+   "target": "辛宝宝",
+   "weight": 141
+  },
+  {
+   "source": "辛宝宝",
+   "target": "韩厚止",
+   "weight": 43
+  },
+  {
+   "source": "辛宝宝",
+   "target": "骆冰瑶",
+   "weight": 78
+  },
+  {
+   "source": "王敦",
+   "target": "辛宝宝",
+   "weight": 67
+  },
+  {
+   "source": "乔慧珠",
+   "target": "辛宝宝",
+   "weight": 29
+  },
+  {
+   "source": "乔慧珠",
+   "target": "韩厚止",
+   "weight": 9
+  },
+  {
+   "source": "乔慧珠",
+   "target": "骆冰瑶",
+   "weight": 34
+  },
+  {
+   "source": "苏真真",
+   "target": "辛宝宝",
+   "weight": 9
+  },
+  {
+   "source": "苏真真",
+   "target": "骆冰瑶",
+   "weight": 11
+  },
+  {
+   "source": "温不晚",
+   "target": "骆冰瑶",
+   "weight": 30
+  },
+  {
+   "source": "乔慧珠",
+   "target": "温不晚",
+   "weight": 62
+  },
+  {
+   "source": "温不晚",
+   "target": "辛宝宝",
+   "weight": 23
+  },
+  {
+   "source": "周青眉",
+   "target": "温不晚",
+   "weight": 6
+  },
+  {
+   "source": "商曦红",
+   "target": "贺平生",
+   "weight": 33
+  },
+  {
+   "source": "乔慧珠",
+   "target": "商曦红",
+   "weight": 5
+  },
+  {
+   "source": "商曦红",
+   "target": "温不晚",
+   "weight": 8
+  },
+  {
+   "source": "商曦红",
+   "target": "辛宝宝",
+   "weight": 7
+  },
+  {
+   "source": "商曦红",
+   "target": "骆冰瑶",
+   "weight": 6
+  },
+  {
+   "source": "商曦红",
+   "target": "韩厚止",
+   "weight": 7
+  },
+  {
+   "source": "温不晚",
+   "target": "韩厚止",
+   "weight": 13
+  },
+  {
+   "source": "商曦红",
+   "target": "王敦",
+   "weight": 10
+  },
+  {
+   "source": "苏真真",
+   "target": "韩厚止",
+   "weight": 8
+  },
+  {
+   "source": "温不晚",
+   "target": "苏真真",
+   "weight": 19
+  },
+  {
+   "source": "炼霓虹",
+   "target": "贺平生",
+   "weight": 43
+  }
+ ]
+}

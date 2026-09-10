@@ -1,0 +1,19 @@
+# dependencies / build
+web/node_modules/
+web/.next/
+web/out/
+node_modules/
+__pycache__/
+*.pyc
+
+# --- copyright: never commit source novel text or full derived corpora ---
+pipeline/source/
+**/raw.txt
+**/chapters_full.json
+*.npy
+*.joblib
+**/chunks.jsonl
+**/03_vectorstore/
+
+# os
+.DS_Store
