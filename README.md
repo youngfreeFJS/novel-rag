@@ -9,7 +9,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-e6b866.svg)](LICENSE)
 [![Next.js 14](https://img.shields.io/badge/Next.js-14-000000?logo=next.js&logoColor=white)](web)
 [![Python 3.9+](https://img.shields.io/badge/Python-3.9%2B-4fd6a8?logo=python&logoColor=white)](pipeline)
-[![Deploy Pages](https://img.shields.io/badge/GitHub_Pages-online_demo-2fae86?logo=github&logoColor=white)](#-在线-demo)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-youngfreefjs.github.io-2fae86?logo=github&logoColor=white)](https://youngfreefjs.github.io/novel-rag/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-4fd6a8.svg)](#roadmap)
 
 [English](#english) · [中文](#中文) · [🌐 在线 Demo](#-在线-demo) · [快速开始](#快速开始) · [设计文档](docs/DESIGN_zh.md)
@@ -38,7 +38,7 @@
 推送到 `main` 后，仓库自带的 GitHub Actions（`.github/workflows/deploy.yml`）会自动构建并发布，地址为：
 
 ```
-https://<你的用户名>.github.io/novel-rag/
+https://youngfreefjs.github.io/novel-rag/
 ```
 
 **开启步骤**：仓库 Settings → Pages → Build and deployment → Source 选 **GitHub Actions**，然后 push 一次即可。若你改了仓库名，把工作流里的 `NEXT_PUBLIC_BASE_PATH: /novel-rag` 同步改成 `/<新仓库名>`。
