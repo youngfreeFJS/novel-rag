@@ -14,7 +14,7 @@
 
 **English** · [中文](#中文) · [🌐 Live Demo](https://youngfreefjs.github.io/novel-rag/)
 
-![NovelRAG — character share ![overview](docs/screenshot-overview.png)amp; relationship topology](docs/hero.png)
+![NovelRAG — character appearance share and relationship topology](docs/hero.png)
 
 </div>
 
