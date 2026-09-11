@@ -90,7 +90,7 @@ python 07_export.py         # export data for the visualization
 
 The visualization is configured for **static GitHub Pages deployment** — anyone can view the showcase in a browser with no Node install.
 
-On every push to `main`, the bundled GitHub Actions workflow (`.github/workflows/deploy.yml`) builds and publishes it. It auto-enables Pages, but the very first time you must set **Settings → Pages → Source → GitHub Actions**. Then the demo lives at:
+On every push to `main`, the bundled GitHub Actions workflow (`.github/workflows/deploy.yml`) builds and publishes it. **Enable Pages once first** — repo **Settings → Pages → Source → GitHub Actions** (the default token can't create the Pages site for you). Then the demo lives at:
 
 ```
 https://youngfreefjs.github.io/novel-rag/

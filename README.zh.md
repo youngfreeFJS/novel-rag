@@ -89,7 +89,7 @@ python 07_export.py         # 导出可视化数据
 
 可视化已配置为 **GitHub Pages 静态部署**，别人不装 Node 也能在浏览器里直接看 showcase。
 
-推送到 `main` 后，仓库自带的工作流（`.github/workflows/deploy.yml`）会自动构建并发布，并尝试自动开启 Pages；**首次仍需**手动去 `Settings → Pages → Source` 选 **GitHub Actions**。地址：
+推送到 `main` 后，仓库自带的工作流（`.github/workflows/deploy.yml`）会自动构建并发布。**首次需先手动开启 Pages**：仓库 `Settings → Pages → Source` 选 **GitHub Actions**（默认 token 无法替你创建 Pages 站点）。地址：
 
 ```
 https://youngfreefjs.github.io/novel-rag/
