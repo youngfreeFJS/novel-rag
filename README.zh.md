@@ -13,7 +13,7 @@
 
 [English README](README.md) · **中文** · [🌐 在线 Demo](https://youngfreefjs.github.io/novel-rag/)
 
-![NovelRAG — 人物出场占比与关系拓扑](docs/hero.png)
+![NovelRAG — 人物出场占比与关系拓扑](docs/hero.gif)
 
 </div>
 
